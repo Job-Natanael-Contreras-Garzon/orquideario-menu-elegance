@@ -1,16 +1,16 @@
 
 import React from 'react';
-import { LanguageContext, useLanguageHook } from '@/hooks/useLanguage';
+import { LanguageContext, createLanguageContextValue } from '@/hooks/useLanguage';
 
 interface LanguageProviderProps {
   children: React.ReactNode;
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const languageHook = useLanguageHook();
+  const contextValue = createLanguageContextValue();
   
   return (
-    <LanguageContext.Provider value={languageHook}>
+    <LanguageContext.Provider value={contextValue}>
       {children}
     </LanguageContext.Provider>
   );

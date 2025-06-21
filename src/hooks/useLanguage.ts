@@ -82,7 +82,7 @@ const translations = {
   }
 };
 
-export const useLanguageHook = () => {
+export const createLanguageContextValue = (): LanguageContextType => {
   const [currentLanguage, setCurrentLanguage] = useState<Language>(languages[0]);
 
   const setLanguage = (lang: Language) => {
