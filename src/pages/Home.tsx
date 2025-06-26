@@ -2,8 +2,9 @@
 import React from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Header } from '@/components/Header';
-import { BackgroundVideo } from '@/components/BackgroundVideo';
+import { ModernBackground } from '@/components/ModernBackground';
 import { Button } from '@/components/ui/button';
+import { ArrowRight, Coffee, Sparkles } from 'lucide-react';
 
 interface HomeProps {
   onMenuClick: () => void;
@@ -18,68 +19,106 @@ export const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <BackgroundVideo />
+      <ModernBackground />
       <Header />
       
-      <div className="relative z-10 min-h-screen flex items-center justify-center">
-        <div className="text-center space-y-8 max-w-4xl mx-auto px-4">
-          {/* Logo placeholder */}
-          <div className="w-32 h-32 mx-auto bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-8">
-            <span className="text-4xl">🌺</span>
+      <div className="relative z-10 min-h-screen flex items-center justify-center px-4">
+        <div className="text-center space-y-8 max-w-5xl mx-auto">
+          {/* Logo with modern design */}
+          <div className="relative mx-auto mb-12 animate-fade-in">
+            <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl flex items-center justify-center shadow-2xl shadow-primary-500/25 glow-effect">
+              <img 
+                src="/lovable-uploads/cf1b229d-b116-4f68-88ef-d9a5b2169013.png" 
+                alt="El Orquídeario Logo" 
+                className="w-16 h-16 object-contain"
+              />
+            </div>
+            <div className="absolute -inset-4 bg-gradient-to-r from-primary-600 to-accent-600 rounded-3xl blur opacity-20 animate-pulse"></div>
           </div>
           
-          <div className="space-y-4">
-            <h1 className="font-playfair text-6xl md:text-8xl font-bold text-white drop-shadow-2xl animate-fade-in">
-              {t('home.title')}
+          <div className="space-y-6 animate-slide-up">
+            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold">
+              <span className="gradient-text">El Orquídeario</span>
             </h1>
             
-            <p className="font-playfair text-2xl md:text-3xl text-white/90 drop-shadow-lg animate-fade-in">
-              {t('home.slogan')}
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-medium">
+              Espacio Memorable
             </p>
             
-            <p className="text-lg text-white/80 max-w-2xl mx-auto animate-fade-in">
-              Más de 500 especies de orquídeas te esperan en nuestro espacio memorable. 
-              Disfruta de café gourmet, pasteles artesanales y una experiencia única.
-            </p>
+            <div className="max-w-3xl mx-auto space-y-4">
+              <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 leading-relaxed">
+                Más de <span className="font-semibold text-primary-600 dark:text-primary-400">500 especies de orquídeas</span> te esperan en nuestro espacio memorable.
+              </p>
+              <p className="text-base md:text-lg text-gray-600 dark:text-gray-300">
+                Disfruta de café gourmet, pasteles artesanales y una experiencia única en un ambiente exclusivo.
+              </p>
+            </div>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-scale-in">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-scale-in pt-8">
             <Button
               onClick={handleWhatsAppClick}
               size="lg"
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105"
+              className="modern-button bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30 group"
             >
-              📱 {t('home.reservations')}
+              <div className="flex items-center space-x-2">
+                <span className="text-lg">📱</span>
+                <span className="font-semibold">Hacer Reserva</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </div>
             </Button>
             
             <Button
               onClick={onMenuClick}
               size="lg"
               variant="outline"
-              className="bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30 px-8 py-4 text-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105"
+              className="modern-button glass border-2 border-primary-200 dark:border-primary-800 text-gray-800 dark:text-gray-100 hover:bg-primary-50 dark:hover:bg-primary-950/50 group"
             >
-              📖 {t('home.menu')}
+              <div className="flex items-center space-x-2">
+                <Coffee className="w-5 h-5" />
+                <span className="font-semibold">Ver Menú</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </div>
             </Button>
           </div>
           
-          {/* Floating elements */}
-          <div className="absolute inset-0 pointer-events-none">
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute text-2xl opacity-30 animate-bounce"
-                style={{
-                  left: `${10 + (i * 10)}%`,
-                  top: `${20 + (i * 8)}%`,
-                  animationDelay: `${i * 0.3}s`,
-                  animationDuration: '3s'
-                }}
+          {/* Modern feature highlights */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-16 animate-fade-in">
+            {[
+              { icon: '🌺', title: '500+ Orquídeas', desc: 'Especies únicas' },
+              { icon: '☕', title: 'Café Gourmet', desc: 'Experiencia premium' },
+              { icon: '🍰', title: 'Pasteles Artesanales', desc: 'Hechos con amor' }
+            ].map((feature, index) => (
+              <div 
+                key={index}
+                className="floating-card glass rounded-2xl p-6 text-center"
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
-                🌸
+                <div className="text-3xl mb-3">{feature.icon}</div>
+                <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-1">{feature.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{feature.desc}</p>
               </div>
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Floating decorative elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute animate-float opacity-10 dark:opacity-20"
+            style={{
+              left: `${10 + (i * 15)}%`,
+              top: `${20 + (i * 10)}%`,
+              animationDelay: `${i * 0.8}s`,
+              animationDuration: `${4 + Math.random() * 2}s`
+            }}
+          >
+            <Sparkles className="w-6 h-6 text-primary-500" />
+          </div>
+        ))}
       </div>
     </div>
   );

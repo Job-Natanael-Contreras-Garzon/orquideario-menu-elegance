@@ -3,89 +3,89 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system with El Orquideario theme */
+/* Modern design system */
 
 @layer base {
   :root {
-    /* Light mode - El Orquideario theme */
-    --background: 252 252 252;
-    --foreground: 51 51 51;
+    /* Light mode - Modern minimal palette */
+    --background: 255 255 255;
+    --foreground: 15 23 42;
 
-    --card: 252 252 252;
-    --card-foreground: 51 51 51;
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
 
-    --popover: 252 252 252;
-    --popover-foreground: 51 51 51;
+    --popover: 255 255 255;
+    --popover-foreground: 15 23 42;
 
-    --primary: 47 79 79;
-    --primary-foreground: 240 240 240;
+    --primary: 14 165 233;
+    --primary-foreground: 248 250 252;
 
-    --secondary: 214 233 214;
-    --secondary-foreground: 51 51 51;
+    --secondary: 241 245 249;
+    --secondary-foreground: 15 23 42;
 
-    --muted: 214 233 214;
-    --muted-foreground: 102 102 102;
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
 
-    --accent: 191 171 143;
-    --accent-foreground: 51 51 51;
+    --accent: 233 97 255;
+    --accent-foreground: 15 23 42;
 
     --destructive: 239 68 68;
     --destructive-foreground: 248 250 252;
 
-    --border: 214 233 214;
-    --input: 214 233 214;
-    --ring: 47 79 79;
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 14 165 233;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 252 252 252;
-    --sidebar-foreground: 51 51 51;
-    --sidebar-primary: 47 79 79;
-    --sidebar-primary-foreground: 240 240 240;
-    --sidebar-accent: 214 233 214;
-    --sidebar-accent-foreground: 51 51 51;
-    --sidebar-border: 214 233 214;
-    --sidebar-ring: 47 79 79;
+    --sidebar-background: 255 255 255;
+    --sidebar-foreground: 15 23 42;
+    --sidebar-primary: 14 165 233;
+    --sidebar-primary-foreground: 248 250 252;
+    --sidebar-accent: 241 245 249;
+    --sidebar-accent-foreground: 15 23 42;
+    --sidebar-border: 226 232 240;
+    --sidebar-ring: 14 165 233;
   }
 
   .dark {
-    /* Dark mode - El Orquideario theme */
-    --background: 28 28 28;
-    --foreground: 240 240 240;
+    /* Dark mode - Modern minimal palette */
+    --background: 2 6 23;
+    --foreground: 248 250 252;
 
-    --card: 28 28 28;
-    --card-foreground: 240 240 240;
+    --card: 15 23 42;
+    --card-foreground: 248 250 252;
 
-    --popover: 28 28 28;
-    --popover-foreground: 240 240 240;
+    --popover: 15 23 42;
+    --popover-foreground: 248 250 252;
 
-    --primary: 240 240 240;
-    --primary-foreground: 47 79 79;
+    --primary: 56 189 248;
+    --primary-foreground: 2 6 23;
 
-    --secondary: 47 79 79;
-    --secondary-foreground: 240 240 240;
+    --secondary: 30 41 59;
+    --secondary-foreground: 248 250 252;
 
-    --muted: 47 79 79;
-    --muted-foreground: 204 204 204;
+    --muted: 30 41 59;
+    --muted-foreground: 148 163 184;
 
-    --accent: 191 171 143;
-    --accent-foreground: 28 28 28;
+    --accent: 212 52 255;
+    --accent-foreground: 248 250 252;
 
     --destructive: 239 68 68;
     --destructive-foreground: 248 250 252;
 
-    --border: 47 79 79;
-    --input: 47 79 79;
-    --ring: 191 171 143;
+    --border: 30 41 59;
+    --input: 30 41 59;
+    --ring: 56 189 248;
 
-    --sidebar-background: 28 28 28;
-    --sidebar-foreground: 240 240 240;
-    --sidebar-primary: 240 240 240;
-    --sidebar-primary-foreground: 47 79 79;
-    --sidebar-accent: 47 79 79;
-    --sidebar-accent-foreground: 240 240 240;
-    --sidebar-border: 47 79 79;
-    --sidebar-ring: 191 171 143;
+    --sidebar-background: 2 6 23;
+    --sidebar-foreground: 248 250 252;
+    --sidebar-primary: 56 189 248;
+    --sidebar-primary-foreground: 2 6 23;
+    --sidebar-accent: 30 41 59;
+    --sidebar-accent-foreground: 248 250 252;
+    --sidebar-border: 30 41 59;
+    --sidebar-ring: 56 189 248;
   }
 }
 
@@ -95,105 +95,81 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground font-inter antialiased;
+    font-feature-settings: "cv11", "ss01";
+    font-variation-settings: "opsz" 32;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-playfair;
+    @apply font-display font-semibold tracking-tight;
+  }
+}
+
+/* Modern visual effects */
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20;
+  }
+  
+  .glass-dark {
+    @apply bg-black/10 backdrop-blur-xl border border-white/10;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 via-accent-500 to-primary-400 bg-clip-text text-transparent;
+  }
+
+  .glow-effect {
+    @apply shadow-lg shadow-primary-500/25;
+  }
+
+  .floating-card {
+    @apply transform-gpu transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/20;
+  }
+
+  .modern-input {
+    @apply border-0 bg-gray-50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl px-4 py-3 transition-all duration-200 focus:bg-white dark:focus:bg-gray-700/50 focus:shadow-lg focus:shadow-primary-500/20;
+  }
+
+  .modern-button {
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-medium transition-all duration-300;
+  }
+
+  .shimmer {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent;
   }
 }
 
 /* Custom animations */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
   }
-  50% {
-    transform: translateY(-10px) rotate(5deg);
-  }
-}
-
-@keyframes mystical-glow {
-  0%, 100% {
-    opacity: 0.1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.3;
-    transform: scale(1.1);
-  }
-}
-
-@keyframes forest-whisper {
-  0%, 100% {
-    transform: translateX(0px) translateY(0px);
-    opacity: 0.05;
-  }
-  25% {
-    transform: translateX(2px) translateY(-1px);
-    opacity: 0.15;
-  }
-  75% {
-    transform: translateX(-1px) translateY(1px);
-    opacity: 0.1;
-  }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-mystical-glow {
-  animation: mystical-glow 4s ease-in-out infinite;
-}
-
-.animate-forest-whisper {
-  animation: forest-whisper 6s ease-in-out infinite;
-}
-
-/* Text clamp utility */
-.line-clamp-2 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-muted;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-primary rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-accent;
 }
 
 /* Smooth transitions */
 * {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
-/* Backdrop blur support */
-.backdrop-blur-sm {
-  backdrop-filter: blur(4px);
+/* Modern scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-/* Hidden treasure effects */
-.treasure-glow {
-  box-shadow: 0 0 20px rgba(34, 139, 34, 0.3), 0 0 40px rgba(34, 139, 34, 0.1);
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
 }
 
-.forest-depth {
-  background: linear-gradient(135deg, 
-    rgba(45, 74, 45, 0.1) 0%, 
-    rgba(34, 139, 34, 0.05) 50%, 
-    rgba(191, 171, 143, 0.1) 100%);
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Selection styling */
+::selection {
+  @apply bg-primary-500/20 text-primary-900;
 }

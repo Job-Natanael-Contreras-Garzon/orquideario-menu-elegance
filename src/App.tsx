@@ -22,16 +22,18 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <LanguageProvider>
-          <Toaster />
-          <Sonner />
-          
-          {currentPage === 'home' && (
-            <Home onMenuClick={navigateToMenu} />
-          )}
-          
-          {currentPage === 'menu' && (
-            <Menu onBackClick={navigateToHome} />
-          )}
+          <div className="min-h-screen bg-background text-foreground">
+            <Toaster />
+            <Sonner />
+            
+            {currentPage === 'home' && (
+              <Home onMenuClick={navigateToMenu} />
+            )}
+            
+            {currentPage === 'menu' && (
+              <Menu onBackClick={navigateToHome} />
+            )}
+          </div>
         </LanguageProvider>
       </TooltipProvider>
     </QueryClientProvider>
