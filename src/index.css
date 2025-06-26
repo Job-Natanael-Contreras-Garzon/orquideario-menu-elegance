@@ -113,8 +113,42 @@
   }
 }
 
+@keyframes mystical-glow {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes forest-whisper {
+  0%, 100% {
+    transform: translateX(0px) translateY(0px);
+    opacity: 0.05;
+  }
+  25% {
+    transform: translateX(2px) translateY(-1px);
+    opacity: 0.15;
+  }
+  75% {
+    transform: translateX(-1px) translateY(1px);
+    opacity: 0.1;
+  }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.animate-mystical-glow {
+  animation: mystical-glow 4s ease-in-out infinite;
+}
+
+.animate-forest-whisper {
+  animation: forest-whisper 6s ease-in-out infinite;
 }
 
 /* Text clamp utility */
@@ -150,4 +184,16 @@
 /* Backdrop blur support */
 .backdrop-blur-sm {
   backdrop-filter: blur(4px);
+}
+
+/* Hidden treasure effects */
+.treasure-glow {
+  box-shadow: 0 0 20px rgba(34, 139, 34, 0.3), 0 0 40px rgba(34, 139, 34, 0.1);
+}
+
+.forest-depth {
+  background: linear-gradient(135deg, 
+    rgba(45, 74, 45, 0.1) 0%, 
+    rgba(34, 139, 34, 0.05) 50%, 
+    rgba(191, 171, 143, 0.1) 100%);
 }

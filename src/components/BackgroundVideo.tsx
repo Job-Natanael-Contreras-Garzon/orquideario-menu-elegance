@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { FernGarden } from './FernGarden';
 
 interface BackgroundVideoProps {
   className?: string;
@@ -8,7 +9,12 @@ interface BackgroundVideoProps {
 export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ className = '' }) => {
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`}>
-      {/* Placeholder for background video - using a beautiful gradient for now */}
+      {/* 3D Fern Garden */}
+      <div className="absolute inset-0 opacity-30">
+        <FernGarden />
+      </div>
+      
+      {/* Original gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-forest-light via-forest-green/20 to-elegant-gold/30 dark:from-elegant-dark dark:via-forest-green/40 dark:to-elegant-gold/20"></div>
       
       {/* Animated floating orchids effect */}
@@ -25,6 +31,24 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ className = ''
             }}
           >
             🌺
+          </div>
+        ))}
+      </div>
+
+      {/* Additional mystical particles */}
+      <div className="absolute inset-0 opacity-10">
+        {[...Array(12)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${i * 0.8}s`,
+              animationDuration: `${4 + Math.random() * 3}s`
+            }}
+          >
+            🌿
           </div>
         ))}
       </div>
