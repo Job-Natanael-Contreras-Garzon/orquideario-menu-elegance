@@ -35,8 +35,12 @@ export const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({
            }}>
       </div>
 
-      {/* 3D Objects */}
-      <Background3D />
+      {/* 3D Objects with error boundary */}
+      <div className="absolute inset-0">
+        <React.Suspense fallback={<div></div>}>
+          <Background3D />
+        </React.Suspense>
+      </div>
 
       {/* Enhanced overlay for better contrast */}
       <div className="absolute inset-0 bg-white/30 dark:bg-black/30 transition-colors duration-500"></div>

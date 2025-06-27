@@ -12,13 +12,17 @@ interface FloatingObjectProps {
 }
 
 const FloatingObject: React.FC<FloatingObjectProps> = ({ position, color, speed, shape }) => {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const meshRef = useRef<THREE.Mesh>(null!);
 
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x += speed;
-      meshRef.current.rotation.y += speed * 0.7;
-      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * speed) * 0.5;
+      try {
+        meshRef.current.rotation.x += speed;
+        meshRef.current.rotation.y += speed * 0.7;
+        meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * speed) * 0.5;
+      } catch (error) {
+        console.warn('Animation error:', error);
+      }
     }
   });
 
@@ -53,7 +57,12 @@ const Scene3D: React.FC = () => {
       <FloatingObject position={[-3, 3, -6]} color="#d434ff" speed={0.012} shape="sphere" />
       <FloatingObject position={[5, -2, -2]} color="#38bdf8" speed={0.007} shape="torus" />
       
-      <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
+      <OrbitControls 
+        enableZoom={false} 
+        enablePan={false} 
+        enableRotate={false}
+        enableDamping={false}
+      />
     </>
   );
 };
@@ -65,7 +74,18 @@ interface Background3DProps {
 export const Background3D: React.FC<Background3DProps> = ({ className = '' }) => {
   return (
     <div className={`absolute inset-0 ${className}`} style={{ pointerEvents: 'none' }}>
-      <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
+      <Canvas 
+        camera={{ position: [0, 0, 5], fov: 60 }}
+        gl={{ 
+          antialias: true,
+          alpha: true,
+          preserveDrawingBuffer: false,
+          powerPreference: "high-performance"
+        }}
+        onCreated={({ gl }) => {
+          gl.setClearColor(0x000000, 0);
+        }}
+      >
         <Suspense fallback={null}>
           <Scene3D />
         </Suspense>
