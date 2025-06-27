@@ -35,9 +35,9 @@ export const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({
            }}>
       </div>
 
-      {/* 3D Objects with error boundary */}
+      {/* 3D Objects with improved error handling */}
       <div className="absolute inset-0">
-        <React.Suspense fallback={<div></div>}>
+        <React.Suspense fallback={null}>
           <Background3D />
         </React.Suspense>
       </div>
@@ -48,15 +48,15 @@ export const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({
       {/* Additional animated particles for menu variant */}
       {variant === 'menu' && (
         <div className="absolute inset-0">
-          {[...Array(8)].map((_, i) => (
+          {[...Array(6)].map((_, i) => (
             <div
               key={i}
               className="absolute w-2 h-2 bg-primary-400/20 dark:bg-primary-500/30 rounded-full animate-float"
               style={{
-                left: `${10 + (i * 12)}%`,
-                top: `${15 + (i * 8)}%`,
-                animationDelay: `${i * 0.6}s`,
-                animationDuration: `${3 + Math.random() * 2}s`
+                left: `${15 + (i * 12)}%`,
+                top: `${20 + (i * 8)}%`,
+                animationDelay: `${i * 0.8}s`,
+                animationDuration: `${4 + Math.random() * 2}s`
               }}
             />
           ))}
