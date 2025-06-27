@@ -2,6 +2,7 @@
 import React, { useState, useMemo } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Header } from '@/components/Header';
+import { AnimatedBackground } from '@/components/AnimatedBackground';
 import { SearchBar } from '@/components/SearchBar';
 import { CategoryGrid } from '@/components/CategoryGrid';
 import { ProductCard } from '@/components/ProductCard';
@@ -55,61 +56,75 @@ export const Menu: React.FC<MenuProps> = ({ onBackClick }) => {
   const specialOrderProducts = products.filter(p => p.category === 'special');
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen relative overflow-hidden">
+      <AnimatedBackground variant="menu" />
       <Header showBackButton onBackClick={onBackClick} />
       
-      <div className="container mx-auto px-4 pt-20 pb-8">
-        <div className="text-center mb-8">
-          <h1 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-4">
+      <div className="relative z-10 container mx-auto px-4 pt-20 pb-8">
+        <div className="text-center mb-8 animate-fade-in">
+          <h1 className="font-display text-4xl md:text-5xl font-bold gradient-text mb-4 animate-gradient">
             {t('menu.title')}
           </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground dark:text-gray-300 text-lg max-w-2xl mx-auto transition-colors duration-500">
             Descubre nuestra selección de café gourmet, pasteles artesanales y bebidas especiales
             en un ambiente único rodeado de orquídeas.
           </p>
         </div>
 
-        <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-        
-        <CategoryGrid
-          categories={categories}
-          onCategorySelect={handleCategorySelect}
-          selectedCategory={selectedCategory}
-        />
+        <div className="animate-slide-up">
+          <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+          
+          <CategoryGrid
+            categories={categories}
+            onCategorySelect={handleCategorySelect}
+            selectedCategory={selectedCategory}
+          />
+        </div>
 
-        {/* Regular Products */}
+        {/* Regular Products with enhanced animations */}
         {filteredProducts.length > 0 && (
-          <div className="mb-12">
+          <div className="mb-12 animate-fade-in">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProducts.map((product) => (
-                <ProductCard
+              {filteredProducts.map((product, index) => (
+                <div
                   key={product.id}
-                  product={product}
-                  onClick={() => handleProductClick(product)}
-                />
+                  className="animate-scale-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <ProductCard
+                    product={product}
+                    onClick={() => handleProductClick(product)}
+                  />
+                </div>
               ))}
             </div>
           </div>
         )}
 
-        {/* Combos Section */}
+        {/* Combos Section with enhanced styling */}
         {showCombos && (
-          <div className="mb-12">
-            <h2 className="font-playfair text-3xl font-bold text-primary mb-6 text-center">
+          <div className="mb-12 animate-fade-in">
+            <h2 className="font-display text-3xl font-bold gradient-text mb-6 text-center animate-gradient">
               {t('category.combos')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {combos.map((combo) => (
-                <ComboCard key={combo.id} combo={combo} />
+              {combos.map((combo, index) => (
+                <div
+                  key={combo.id}
+                  className="animate-slide-up"
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  <ComboCard combo={combo} />
+                </div>
               ))}
             </div>
           </div>
         )}
 
-        {/* Special Orders Section */}
+        {/* Special Orders Section with enhanced styling */}
         {showSpecialOrders && (
-          <div className="mb-12">
-            <h2 className="font-playfair text-3xl font-bold text-primary mb-6 text-center">
+          <div className="mb-12 animate-fade-in">
+            <h2 className="font-display text-3xl font-bold gradient-text mb-6 text-center animate-gradient">
               {t('category.special')}
             </h2>
             <SpecialOrdersSection
@@ -119,12 +134,14 @@ export const Menu: React.FC<MenuProps> = ({ onBackClick }) => {
           </div>
         )}
 
-        {/* No results message */}
+        {/* No results message with enhanced styling */}
         {filteredProducts.length === 0 && searchTerm && (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground text-lg">
-              No se encontraron productos que coincidan con "{searchTerm}"
-            </p>
+          <div className="text-center py-12 animate-fade-in">
+            <div className="glass rounded-2xl p-8 max-w-md mx-auto">
+              <p className="text-muted-foreground dark:text-gray-300 text-lg transition-colors duration-500">
+                No se encontraron productos que coincidan con "{searchTerm}"
+              </p>
+            </div>
           </div>
         )}
       </div>

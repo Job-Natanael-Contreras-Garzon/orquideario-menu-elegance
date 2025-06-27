@@ -3,11 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern design system */
+/* Modern design system with enhanced transitions */
 
 @layer base {
   :root {
-    /* Light mode - Modern minimal palette */
+    /* Light mode - Enhanced modern minimal palette */
     --background: 255 255 255;
     --foreground: 15 23 42;
 
@@ -49,7 +49,7 @@
   }
 
   .dark {
-    /* Dark mode - Modern minimal palette */
+    /* Dark mode - Enhanced modern minimal palette */
     --background: 2 6 23;
     --foreground: 248 250 252;
 
@@ -91,13 +91,14 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-colors duration-300;
   }
 
   body {
     @apply bg-background text-foreground font-inter antialiased;
     font-feature-settings: "cv11", "ss01";
     font-variation-settings: "opsz" 32;
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -105,22 +106,23 @@
   }
 }
 
-/* Modern visual effects */
+/* Enhanced visual effects with smooth transitions */
 @layer utilities {
   .glass {
-    @apply bg-white/10 backdrop-blur-xl border border-white/20;
+    @apply bg-white/10 backdrop-blur-xl border border-white/20 transition-all duration-500;
   }
   
   .glass-dark {
-    @apply bg-black/10 backdrop-blur-xl border border-white/10;
+    @apply bg-black/10 backdrop-blur-xl border border-white/10 transition-all duration-500;
   }
 
   .gradient-text {
     @apply bg-gradient-to-r from-primary-600 via-accent-500 to-primary-400 bg-clip-text text-transparent;
+    background-size: 200% 200%;
   }
 
   .glow-effect {
-    @apply shadow-lg shadow-primary-500/25;
+    @apply shadow-lg shadow-primary-500/25 transition-shadow duration-300;
   }
 
   .floating-card {
@@ -128,11 +130,11 @@
   }
 
   .modern-input {
-    @apply border-0 bg-gray-50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl px-4 py-3 transition-all duration-200 focus:bg-white dark:focus:bg-gray-700/50 focus:shadow-lg focus:shadow-primary-500/20;
+    @apply border-0 bg-gray-50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl px-4 py-3 transition-all duration-300 focus:bg-white dark:focus:bg-gray-700/50 focus:shadow-lg focus:shadow-primary-500/20 focus:scale-105;
   }
 
   .modern-button {
-    @apply relative overflow-hidden rounded-xl px-6 py-3 font-medium transition-all duration-300;
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-medium transition-all duration-300 hover:shadow-lg;
   }
 
   .shimmer {
@@ -140,21 +142,57 @@
   }
 }
 
-/* Custom animations */
+/* Enhanced animations */
 @keyframes shimmer {
   100% {
     transform: translateX(100%);
   }
 }
 
-/* Smooth transitions */
-* {
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
 }
 
-/* Modern scrollbar */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(14, 165, 233, 0.8);
+  }
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Enhanced scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -162,14 +200,22 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full transition-colors duration-300;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-400 dark:bg-gray-500;
 }
 
-/* Selection styling */
+/* Enhanced selection styling */
 ::selection {
-  @apply bg-primary-500/20 text-primary-900;
+  @apply bg-primary-500/30 text-primary-900 dark:text-primary-100;
+}
+
+/* View transitions for theme switching */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.5s;
+  }
 }
