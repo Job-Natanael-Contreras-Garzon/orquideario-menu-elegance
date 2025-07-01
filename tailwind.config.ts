@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
 const colors = require("tailwindcss/colors");
@@ -57,6 +58,46 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Orchid-themed colors
+        orchid: {
+          50: "#faf7ff",
+          100: "#f4edff", 
+          200: "#eadcff",
+          300: "#d8c0ff",
+          400: "#bf95ff",
+          500: "#a366ff",
+          600: "#8b42ff",
+          700: "#7729e8",
+          800: "#6022c4",
+          900: "#501da1",
+          950: "#33116e"
+        },
+        leaf: {
+          50: "#f0fdf4",
+          100: "#dcfce7",
+          200: "#bbf7d0", 
+          300: "#86efac",
+          400: "#4ade80",
+          500: "#22c55e",
+          600: "#16a34a",
+          700: "#15803d",
+          800: "#166534",
+          900: "#14532d",
+          950: "#052e16"
+        },
+        petal: {
+          50: "#fdf2f8",
+          100: "#fce7f3",
+          200: "#fbcfe8",
+          300: "#f9a8d4",
+          400: "#f472b6",
+          500: "#ec4899",
+          600: "#db2777",
+          700: "#be185d",
+          800: "#9d174d",
+          900: "#831843",
+          950: "#500724"
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -112,10 +153,10 @@ export default {
         },
         'glow': {
           '0%, 100%': {
-            boxShadow: '0 0 20px rgba(14, 165, 233, 0.5)',
+            boxShadow: '0 0 20px rgba(34, 197, 94, 0.5)',
           },
           '50%': {
-            boxShadow: '0 0 40px rgba(14, 165, 233, 0.8)',
+            boxShadow: '0 0 40px rgba(163, 102, 255, 0.8)',
           }
         },
         'gradient': {

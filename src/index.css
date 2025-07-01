@@ -11,19 +11,19 @@
     --card-foreground: 17 24 39;
     --popover: 255 255 255;
     --popover-foreground: 17 24 39;
-    --primary: 16 185 129; /* Emerald 500 */
-    --primary-foreground: 236 253 245; /* Emerald 50 */
+    --primary: 34 197 94; /* Leaf green 500 */
+    --primary-foreground: 240 253 244; /* Leaf 50 */
     --secondary: 56 189 248; /* Sky 400 */
     --secondary-foreground: 12 74 110; /* Sky 900 */
     --muted: 243 244 246;
     --muted-foreground: 107 114 128;
-    --accent: 244 63 94; /* Rose 500 */
-    --accent-foreground: 255 241 242; /* Rose 50 */
+    --accent: 236 72 153; /* Petal 500 */
+    --accent-foreground: 253 242 248; /* Petal 50 */
     --destructive: 239 68 68;
     --destructive-foreground: 254 242 242;
     --border: 229 231 235;
     --input: 243 244 246;
-    --ring: 16 185 129; /* Emerald 500 */
+    --ring: 34 197 94; /* Leaf green 500 */
     --radius: 0.75rem;
   }
 
@@ -34,19 +34,19 @@
     --card-foreground: 248 250 252;
     --popover: 15 23 42;
     --popover-foreground: 248 250 252;
-    --primary: 52 211 153; /* Emerald 400 */
-    --primary-foreground: 6 78 59; /* Emerald 900 */
+    --primary: 74 222 128; /* Leaf green 400 */
+    --primary-foreground: 5 46 22; /* Leaf 900 */
     --secondary: 125 211 252; /* Sky 300 */
     --secondary-foreground: 240 249 255; /* Sky 100 */
     --muted: 30 41 59;
     --muted-foreground: 148 163 184;
-    --accent: 251 113 133; /* Rose 400 */
-    --accent-foreground: 136 19 55; /* Rose 900 */
+    --accent: 244 114 182; /* Petal 400 */
+    --accent-foreground: 80 7 36; /* Petal 900 */
     --destructive: 239 68 68;
     --destructive-foreground: 254 242 242;
     --border: 30 41 59;
     --input: 30 41 59;
-    --ring: 52 211 153; /* Emerald 400 */
+    --ring: 74 222 128; /* Leaf green 400 */
   }
 }
 
@@ -67,41 +67,44 @@
 
 @layer utilities {
   .glass {
-    @apply bg-white/10 backdrop-blur-xl border border-primary-200/20 dark:border-primary-800/20 transition-all duration-500;
+    @apply bg-white/10 backdrop-blur-xl border border-leaf-200/20 dark:border-leaf-800/20 transition-all duration-500;
   }
   .glass-dark {
-    @apply bg-black/10 backdrop-blur-xl border border-primary-200/10 dark:border-primary-800/10 transition-all duration-500;
+    @apply bg-black/10 backdrop-blur-xl border border-leaf-200/10 dark:border-leaf-800/10 transition-all duration-500;
+  }
+  .glass-card {
+    @apply bg-white/80 dark:bg-card/80 backdrop-blur-sm border border-leaf-200/30 dark:border-leaf-800/30 transition-all duration-300;
   }
   .gradient-text {
-    @apply bg-gradient-to-r from-secondary-400 to-accent-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-orchid-500 via-leaf-500 to-petal-500 bg-clip-text text-transparent;
     background-size: 200% 200%;
   }
   .glow-effect {
-    @apply shadow-lg shadow-primary-500/25 transition-shadow duration-300;
+    @apply shadow-lg shadow-leaf-500/25 transition-shadow duration-300;
   }
   .floating-card {
-    @apply transform-gpu transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/20;
+    @apply transform-gpu transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orchid-500/20;
   }
   .modern-input {
-    @apply border-0 bg-primary-50/50 dark:bg-primary-950/50 backdrop-blur-sm rounded-xl px-4 py-3 transition-all duration-300 focus:bg-white dark:focus:bg-card/80 focus:shadow-lg focus:shadow-primary-500/20 focus:scale-105 focus:ring-2 focus:ring-primary-500/30;
+    @apply border-0 bg-leaf-50/50 dark:bg-leaf-950/50 backdrop-blur-sm rounded-xl px-4 py-3 transition-all duration-300 focus:bg-white dark:focus:bg-card/80 focus:shadow-lg focus:shadow-leaf-500/20 focus:scale-105 focus:ring-2 focus:ring-leaf-500/30;
   }
   .modern-button {
-    @apply relative overflow-hidden rounded-xl px-6 py-3 font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/20;
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-medium transition-all duration-300 hover:shadow-lg hover:shadow-orchid-500/20;
   }
   .shimmer {
-    @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-primary-100/20 dark:before:via-primary-900/20 before:to-transparent;
+    @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-orchid-100/20 dark:before:via-orchid-900/20 before:to-transparent;
   }
   .focus-natural {
-    @apply focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:ring-offset-2 focus:ring-offset-background transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-leaf-500/50 focus:ring-offset-2 focus:ring-offset-background transition-all duration-300;
   }
   .card-hover {
-    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-primary-500/10;
+    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-orchid-500/10;
   }
   .bg-native-gradient {
-    @apply bg-gradient-to-br from-primary-50 via-secondary-100 to-accent-50 dark:from-primary-950 dark:via-background dark:to-accent-950;
+    @apply bg-gradient-to-br from-leaf-50 via-orchid-100 to-petal-50 dark:from-leaf-950 dark:via-background dark:to-petal-950;
   }
   .category-gradient {
-    @apply bg-gradient-to-br from-primary-100 via-secondary-100 to-accent-100 dark:from-primary-900 dark:via-secondary-900 dark:to-accent-900;
+    @apply bg-gradient-to-br from-leaf-100 via-orchid-100 to-petal-100 dark:from-leaf-900 dark:via-orchid-900 dark:to-petal-900;
   }
 }
 
@@ -122,10 +125,10 @@
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
   }
   50% {
-    box-shadow: 0 0 40px rgba(56, 189, 248, 0.6);
+    box-shadow: 0 0 40px rgba(163, 102, 255, 0.6);
   }
 }
 
@@ -160,15 +163,15 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-600 rounded-full transition-colors duration-300;
+  @apply bg-leaf-300 dark:bg-leaf-600 rounded-full transition-colors duration-300;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400 dark:bg-gray-500;
+  @apply bg-leaf-400 dark:bg-leaf-500;
 }
 
 ::selection {
-  @apply bg-primary-500/30 text-primary-900 dark:text-primary-100;
+  @apply bg-orchid-500/30 text-orchid-900 dark:text-orchid-100;
 }
 
 @media (prefers-reduced-motion: no-preference) {
