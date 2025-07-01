@@ -18,6 +18,11 @@ export const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
     window.open('https://wa.me/59112345678?text=Hola! Me gustaría hacer una reserva en El Orquídeario', '_blank');
   };
 
+  const handleMenuClick = () => {
+    console.log('Menu button clicked'); // Debug log
+    onMenuClick();
+  };
+
   return (
     <div className="bg-background text-foreground">
       <Header />
@@ -72,7 +77,7 @@ export const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
                   </div>
                 </Button>
                 <Button
-                  onClick={onMenuClick}
+                  onClick={handleMenuClick}
                   size="lg"
                   variant="outline"
                   className="modern-button glass border-2 border-orchid-200 dark:border-orchid-800 text-gray-800 dark:text-gray-100 hover:bg-orchid-50 dark:hover:bg-orchid-950/50 group transition-all duration-300 hover:scale-105"
