@@ -47,7 +47,6 @@ interface FloatingObjectProps {
 }
 
 const FloatingObject: React.FC<FloatingObjectProps> = ({ position, color, speed, shape }) => {
-<<<<<<< Updated upstream
   const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
@@ -74,82 +73,6 @@ const FloatingObject: React.FC<FloatingObjectProps> = ({ position, color, speed,
       return <Torus ref={meshRef} position={position} args={[0.8, 0.3, 8, 16]}>{material}</Torus>;
     default:
       return <Sphere ref={meshRef} position={position} args={[0.8, 16, 16]}>{material}</Sphere>;
-=======
-  const groupRef = useRef<THREE.Group>(null);
-  const [pos, setPos] = React.useState(position);
-  
-  // Use a more efficient update with useRef to reduce state updates
-  const positionRef = useRef(position);
-  
-  useFrame((state) => {
-    if (groupRef.current) {
-      try {
-        groupRef.current.rotation.x += speed;
-        groupRef.current.rotation.y += speed * 0.7;
-        
-        // Use reference for animation calculations to reduce re-renders
-        const newY = position[1] + Math.sin(state.clock.elapsedTime * speed) * 0.5;
-        if (Math.abs(positionRef.current[1] - newY) > 0.01) {
-          positionRef.current = [position[0], newY, position[2]];
-          setPos(positionRef.current);
-        }
-      } catch (error) {
-        console.warn('Animation error:', error);
-      }
-    }
-  });
-
-  // Custom shader material for a more subtle effect
-  const materialProps = {
-    color,
-    transparent: true,
-    opacity: 0.6,
-    roughness: 0.4,
-    metalness: 0.1,
-    // Make the material react to theme changes
-    emissive: color,
-    emissiveIntensity: 0.15
-  };
-  
-  return (
-    <group ref={groupRef} position={pos}>
-      {shape === 'sphere' && (
-        <mesh>
-          <sphereGeometry args={[0.8, 24, 24]} /> {/* Higher segments for smoother look */}
-          <meshPhysicalMaterial {...materialProps} />
-        </mesh>
-      )}
-      {shape === 'box' && (
-        <mesh>
-          <boxGeometry args={[1, 1, 1]} />
-          <meshPhysicalMaterial {...materialProps} />
-        </mesh>
-      )}
-      {shape === 'torus' && (
-        <mesh>
-          <torusGeometry args={[0.8, 0.3, 16, 32]} /> {/* Higher segments for smoother look */}
-          <meshPhysicalMaterial {...materialProps} />
-        </mesh>
-      )}
-    </group>
-  );
-};
-
-// Definimos colores que van bien con el tema de El Orquideario
-// Colores basados en la identidad visual del logo de El Orquideario
-const orquidearioColors = {
-  lightTheme: {
-    primary: "#0e5135", // Verde oscuro principal del logo
-    secondary: "#227151", // Verde medio para contraste
-    accent: "#66be99", // Verde más claro para acentos
-    highlight: "#d0f0e4" // Verde muy claro/mint para resaltar elementos
-  },
-  darkTheme: {
-    primary: "#1a8858", // Verde más luminoso pero elegante para dark mode
-    secondary: "#2b634c", // Verde oscuro que mantiene visibilidad
-    accent: "#56a57d", // Verde medio con suficiente contraste
-    highlight: "#195c3e" // Verde oscuro pero vibrante
->>>>>>> Stashed changes
   }
 };
 
@@ -181,17 +104,6 @@ const Scene3D: React.FC = () => {
   
   return (
     <>
-<<<<<<< Updated upstream
-      <ambientLight intensity={0.4} />
-      <pointLight position={[10, 10, 10]} intensity={0.8} />
-      <pointLight position={[-10, -10, -10]} intensity={0.4} />
-      
-      <FloatingObject position={[4, 2, -5]} color="#38bdf8" speed={0.008} shape="sphere" />
-      <FloatingObject position={[-4, -1, -3]} color="#e961ff" speed={0.01} shape="torus" />
-      <FloatingObject position={[2, -3, -4]} color="#0ea5e9" speed={0.006} shape="box" />
-      <FloatingObject position={[-3, 3, -6]} color="#d434ff" speed={0.009} shape="sphere" />
-      <FloatingObject position={[5, -2, -2]} color="#38bdf8" speed={0.005} shape="torus" />
-=======
       {/* Iluminación mejorada */}
       <ambientLight intensity={isDarkMode ? 0.3 : 0.5} />
       <pointLight position={[10, 10, 10]} intensity={isDarkMode ? 0.8 : 1} color={isDarkMode ? "#aaccff" : "#ffffff"} />
@@ -202,7 +114,6 @@ const Scene3D: React.FC = () => {
       <FloatingObject position={[-4, -1, -3]} color={colors.secondary} speed={0.015} shape="torus" />
       <FloatingObject position={[2, -3, -4]} color={colors.accent} speed={0.008} shape="box" />
       <FloatingObject position={[-2, 2, -6]} color={colors.highlight} speed={0.012} shape="sphere" />
->>>>>>> Stashed changes
       
       {isRendered && (
         <OrbitControls 
@@ -270,66 +181,6 @@ const useAppThemeDetector = () => {
 };
 
 export const Background3D: React.FC<Background3DProps> = ({ className = '' }) => {
-<<<<<<< Updated upstream
-  const [webglSupported, setWebglSupported] = React.useState(true);
-
-  React.useEffect(() => {
-    // Check WebGL support
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    if (!gl) {
-      console.warn('WebGL not supported, falling back to 2D background');
-      setWebglSupported(false);
-    }
-  }, []);
-
-  if (!webglSupported) {
-    return <div className={`absolute inset-0 ${className}`}></div>;
-  }
-
-  return (
-    <div className={`absolute inset-0 ${className}`} style={{ pointerEvents: 'none' }}>
-      <ErrorBoundary>
-        <Canvas 
-          camera={{ position: [0, 0, 5], fov: 60 }}
-          gl={{ 
-            antialias: false,
-            alpha: true,
-            preserveDrawingBuffer: false,
-            powerPreference: "default",
-            failIfMajorPerformanceCaveat: true
-          }}
-          onCreated={({ gl, scene, camera }) => {
-            try {
-              gl.setClearColor(0x000000, 0);
-              
-              // Handle context lost
-              const handleContextLost = (event: Event) => {
-                event.preventDefault();
-                console.warn('WebGL context lost, attempting recovery...');
-              };
-              
-              const handleContextRestored = () => {
-                console.log('WebGL context restored');
-              };
-              
-              gl.domElement.addEventListener('webglcontextlost', handleContextLost);
-              gl.domElement.addEventListener('webglcontextrestored', handleContextRestored);
-            } catch (error) {
-              console.warn('Canvas setup error:', error);
-            }
-          }}
-          onError={(error) => {
-            console.warn('Canvas error:', error);
-            setWebglSupported(false);
-          }}
-        >
-          <Suspense fallback={null}>
-            <Scene3D />
-          </Suspense>
-        </Canvas>
-      </ErrorBoundary>
-=======
   const [canvasError, setCanvasError] = React.useState(false);
   const isDarkTheme = useAppThemeDetector();
   const { currentLanguage } = useLanguage();
@@ -450,7 +301,6 @@ export const Background3D: React.FC<Background3DProps> = ({ className = '' }) =>
           </Canvas>
         </ThreeJSErrorBoundary>
       ) : fallbackContent}
->>>>>>> Stashed changes
     </div>
   );
 };

@@ -25,7 +25,7 @@ export const Header: React.FC<HeaderProps> = ({ showBackButton, onBackClick }) =
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10 backdrop-blur-xl transition-all duration-500">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-background/95 border-b border-orchid-200/50 dark:border-orchid-800/50 backdrop-blur-xl transition-all duration-500 shadow-sm">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           {showBackButton && (
@@ -33,13 +33,13 @@ export const Header: React.FC<HeaderProps> = ({ showBackButton, onBackClick }) =
               variant="ghost"
               size="sm"
               onClick={onBackClick}
-              className="modern-button text-gray-700 dark:text-gray-200 hover:bg-white/20 dark:hover:bg-black/20 group transition-all duration-300 hover:scale-105"
+              className="text-orchid-700 dark:text-orchid-200 hover:bg-orchid-100 dark:hover:bg-orchid-900/50 group transition-all duration-300 hover:scale-105 rounded-xl"
             >
               <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
               Volver
             </Button>
           )}
-          <h1 className="text-xl font-display font-bold gradient-text animate-gradient">
+          <h1 className="text-xl font-display font-bold bg-gradient-to-r from-orchid-600 via-primary-500 to-petal-500 bg-clip-text text-transparent">
             El Orquídeario
           </h1>
         </div>
@@ -49,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({ showBackButton, onBackClick }) =
             variant="ghost"
             size="sm"
             onClick={toggleLanguage}
-            className="modern-button text-gray-700 dark:text-gray-200 hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 hover:scale-105"
+            className="text-orchid-700 dark:text-orchid-200 hover:bg-orchid-100 dark:hover:bg-orchid-900/50 transition-all duration-300 hover:scale-105 rounded-xl"
             title={t('language.toggle')}
           >
             <Globe className="w-4 h-4 mr-2" />
@@ -60,7 +60,7 @@ export const Header: React.FC<HeaderProps> = ({ showBackButton, onBackClick }) =
             variant="ghost"
             size="sm"
             onClick={toggleTheme}
-            className="modern-button text-gray-700 dark:text-gray-200 hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 hover:scale-105"
+            className="text-orchid-700 dark:text-orchid-200 hover:bg-orchid-100 dark:hover:bg-orchid-900/50 transition-all duration-300 hover:scale-105 rounded-xl"
             title={t('theme.toggle')}
           >
             {getThemeIcon()}

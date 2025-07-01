@@ -2,6 +2,7 @@
 import React, { useState, useMemo } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 import { AnimatedBackground } from '@/components/AnimatedBackground';
 import { SearchBar } from '@/components/SearchBar';
 import { CategoryGrid } from '@/components/CategoryGrid';
@@ -84,7 +85,7 @@ export const Menu: React.FC<MenuProps> = ({ onBackClick }) => {
         {/* Regular Products with enhanced animations */}
         {filteredProducts.length > 0 && (
           <div className="mb-12 animate-fade-in">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
               {filteredProducts.map((product, index) => (
                 <div
                   key={product.id}
@@ -151,6 +152,9 @@ export const Menu: React.FC<MenuProps> = ({ onBackClick }) => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

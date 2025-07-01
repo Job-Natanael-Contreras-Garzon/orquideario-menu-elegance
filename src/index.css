@@ -3,89 +3,50 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern design system with enhanced transitions */
-
 @layer base {
   :root {
-    /* Light mode - Enhanced modern minimal palette */
-    --background: 255 255 255;
-    --foreground: 15 23 42;
-
+    --background: 249 250 251; /* Very light gray */
+    --foreground: 17 24 39; /* Dark gray for text */
     --card: 255 255 255;
-    --card-foreground: 15 23 42;
-
+    --card-foreground: 17 24 39;
     --popover: 255 255 255;
-    --popover-foreground: 15 23 42;
-
-    --primary: 14 165 233;
-    --primary-foreground: 248 250 252;
-
-    --secondary: 241 245 249;
-    --secondary-foreground: 15 23 42;
-
-    --muted: 241 245 249;
-    --muted-foreground: 100 116 139;
-
-    --accent: 233 97 255;
-    --accent-foreground: 15 23 42;
-
+    --popover-foreground: 17 24 39;
+    --primary: 16 185 129; /* Emerald 500 */
+    --primary-foreground: 236 253 245; /* Emerald 50 */
+    --secondary: 56 189 248; /* Sky 400 */
+    --secondary-foreground: 12 74 110; /* Sky 900 */
+    --muted: 243 244 246;
+    --muted-foreground: 107 114 128;
+    --accent: 244 63 94; /* Rose 500 */
+    --accent-foreground: 255 241 242; /* Rose 50 */
     --destructive: 239 68 68;
-    --destructive-foreground: 248 250 252;
-
-    --border: 226 232 240;
-    --input: 226 232 240;
-    --ring: 14 165 233;
-
+    --destructive-foreground: 254 242 242;
+    --border: 229 231 235;
+    --input: 243 244 246;
+    --ring: 16 185 129; /* Emerald 500 */
     --radius: 0.75rem;
-
-    --sidebar-background: 255 255 255;
-    --sidebar-foreground: 15 23 42;
-    --sidebar-primary: 14 165 233;
-    --sidebar-primary-foreground: 248 250 252;
-    --sidebar-accent: 241 245 249;
-    --sidebar-accent-foreground: 15 23 42;
-    --sidebar-border: 226 232 240;
-    --sidebar-ring: 14 165 233;
   }
 
   .dark {
-    /* Dark mode - Enhanced modern minimal palette */
-    --background: 2 6 23;
+    --background: 3 7 18; /* Very dark blue-gray */
     --foreground: 248 250 252;
-
     --card: 15 23 42;
     --card-foreground: 248 250 252;
-
     --popover: 15 23 42;
     --popover-foreground: 248 250 252;
-
-    --primary: 56 189 248;
-    --primary-foreground: 2 6 23;
-
-    --secondary: 30 41 59;
-    --secondary-foreground: 248 250 252;
-
+    --primary: 52 211 153; /* Emerald 400 */
+    --primary-foreground: 6 78 59; /* Emerald 900 */
+    --secondary: 125 211 252; /* Sky 300 */
+    --secondary-foreground: 240 249 255; /* Sky 100 */
     --muted: 30 41 59;
     --muted-foreground: 148 163 184;
-
-    --accent: 212 52 255;
-    --accent-foreground: 248 250 252;
-
+    --accent: 251 113 133; /* Rose 400 */
+    --accent-foreground: 136 19 55; /* Rose 900 */
     --destructive: 239 68 68;
-    --destructive-foreground: 248 250 252;
-
+    --destructive-foreground: 254 242 242;
     --border: 30 41 59;
     --input: 30 41 59;
-    --ring: 56 189 248;
-
-    --sidebar-background: 2 6 23;
-    --sidebar-foreground: 248 250 252;
-    --sidebar-primary: 56 189 248;
-    --sidebar-primary-foreground: 2 6 23;
-    --sidebar-accent: 30 41 59;
-    --sidebar-accent-foreground: 248 250 252;
-    --sidebar-border: 30 41 59;
-    --sidebar-ring: 56 189 248;
+    --ring: 52 211 153; /* Emerald 400 */
   }
 }
 
@@ -93,56 +54,57 @@
   * {
     @apply border-border transition-colors duration-300;
   }
-
   body {
     @apply bg-background text-foreground font-inter antialiased;
     font-feature-settings: "cv11", "ss01";
     font-variation-settings: "opsz" 32;
     transition: background-color 0.5s ease, color 0.5s ease;
   }
-
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-semibold tracking-tight;
   }
 }
 
-/* Enhanced visual effects with smooth transitions */
 @layer utilities {
   .glass {
-    @apply bg-white/10 backdrop-blur-xl border border-white/20 transition-all duration-500;
+    @apply bg-white/10 backdrop-blur-xl border border-primary-200/20 dark:border-primary-800/20 transition-all duration-500;
   }
-  
   .glass-dark {
-    @apply bg-black/10 backdrop-blur-xl border border-white/10 transition-all duration-500;
+    @apply bg-black/10 backdrop-blur-xl border border-primary-200/10 dark:border-primary-800/10 transition-all duration-500;
   }
-
   .gradient-text {
-    @apply bg-gradient-to-r from-primary-600 via-accent-500 to-primary-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-secondary-400 to-accent-500 bg-clip-text text-transparent;
     background-size: 200% 200%;
   }
-
   .glow-effect {
     @apply shadow-lg shadow-primary-500/25 transition-shadow duration-300;
   }
-
   .floating-card {
     @apply transform-gpu transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/20;
   }
-
   .modern-input {
-    @apply border-0 bg-gray-50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl px-4 py-3 transition-all duration-300 focus:bg-white dark:focus:bg-gray-700/50 focus:shadow-lg focus:shadow-primary-500/20 focus:scale-105;
+    @apply border-0 bg-primary-50/50 dark:bg-primary-950/50 backdrop-blur-sm rounded-xl px-4 py-3 transition-all duration-300 focus:bg-white dark:focus:bg-card/80 focus:shadow-lg focus:shadow-primary-500/20 focus:scale-105 focus:ring-2 focus:ring-primary-500/30;
   }
-
   .modern-button {
-    @apply relative overflow-hidden rounded-xl px-6 py-3 font-medium transition-all duration-300 hover:shadow-lg;
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-medium transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/20;
   }
-
   .shimmer {
-    @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent;
+    @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-primary-100/20 dark:before:via-primary-900/20 before:to-transparent;
+  }
+  .focus-natural {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:ring-offset-2 focus:ring-offset-background transition-all duration-300;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-primary-500/10;
+  }
+  .bg-native-gradient {
+    @apply bg-gradient-to-br from-primary-50 via-secondary-100 to-accent-50 dark:from-primary-950 dark:via-background dark:to-accent-950;
+  }
+  .category-gradient {
+    @apply bg-gradient-to-br from-primary-100 via-secondary-100 to-accent-100 dark:from-primary-900 dark:via-secondary-900 dark:to-accent-900;
   }
 }
 
-/* Enhanced animations */
 @keyframes shimmer {
   100% {
     transform: translateX(100%);
@@ -160,10 +122,10 @@
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
   }
   50% {
-    box-shadow: 0 0 40px rgba(14, 165, 233, 0.8);
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.6);
   }
 }
 
@@ -185,12 +147,10 @@
   }
 }
 
-/* Smooth transitions for all elements */
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* Enhanced scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -207,12 +167,10 @@
   @apply bg-gray-400 dark:bg-gray-500;
 }
 
-/* Enhanced selection styling */
 ::selection {
   @apply bg-primary-500/30 text-primary-900 dark:text-primary-100;
 }
 
-/* View transitions for theme switching */
 @media (prefers-reduced-motion: no-preference) {
   ::view-transition-old(root),
   ::view-transition-new(root) {
