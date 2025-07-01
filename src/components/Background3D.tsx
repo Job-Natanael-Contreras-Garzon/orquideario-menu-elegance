@@ -1,3 +1,4 @@
+
 import React, { Suspense, useRef, Component, ErrorInfo, ReactNode } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Sphere, Box, Torus } from '@react-three/drei';
@@ -73,6 +74,22 @@ const FloatingObject: React.FC<FloatingObjectProps> = ({ position, color, speed,
       return <Torus ref={meshRef} position={position} args={[0.8, 0.3, 8, 16]}>{material}</Torus>;
     default:
       return <Sphere ref={meshRef} position={position} args={[0.8, 16, 16]}>{material}</Sphere>;
+  }
+};
+
+// Define the color palette for El Orquideario
+const orquidearioColors = {
+  lightTheme: {
+    primary: "#22c55e",    // leaf-500
+    secondary: "#a366ff",  // orchid-500
+    accent: "#ec4899",     // petal-500
+    highlight: "#16a34a"   // leaf-600
+  },
+  darkTheme: {
+    primary: "#4ade80",    // leaf-400
+    secondary: "#bf95ff",  // orchid-400
+    accent: "#f472b6",     // petal-400
+    highlight: "#22c55e"   // leaf-500
   }
 };
 
