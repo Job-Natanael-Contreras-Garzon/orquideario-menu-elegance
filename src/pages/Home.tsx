@@ -3,7 +3,6 @@ import React from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { AnimatedBackground } from '@/components/AnimatedBackground';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Coffee, Sparkles } from 'lucide-react';
 
@@ -18,8 +17,10 @@ export const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
     window.open('https://wa.me/59112345678?text=Hola! Me gustaría hacer una reserva en El Orquídeario', '_blank');
   };
 
-  const handleMenuClick = () => {
-    console.log('Menu button clicked'); // Debug log
+  const handleMenuClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('Menu button clicked - calling onMenuClick'); // Debug log
     onMenuClick();
   };
 
@@ -29,8 +30,34 @@ export const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
       <div className="relative h-[200vh]">
         {/* Sticky Hero Section */}
         <div className="sticky top-0 h-screen flex flex-col">
+          {/* Clean gradient background without yellow */}
           <div className="absolute inset-0 overflow-hidden">
-            <AnimatedBackground variant="home" />
+            <div className="absolute inset-0 bg-gradient-to-br from-leaf-50 via-orchid-50 to-petal-50 dark:from-leaf-950 dark:via-background dark:to-petal-950"></div>
+            
+            {/* Floating geometric shapes */}
+            <div className="absolute inset-0">
+              {/* Large circle */}
+              <div className="absolute top-1/4 -right-32 w-96 h-96 bg-gradient-to-br from-orchid-400/20 to-petal-400/20 rounded-full blur-3xl animate-float"></div>
+              
+              {/* Medium circle */}
+              <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-gradient-to-br from-petal-400/20 to-leaf-400/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+              
+              {/* Small circles */}
+              <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-gradient-to-br from-leaf-300/30 to-orchid-300/30 rounded-full blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
+              
+              <div className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-gradient-to-br from-orchid-300/30 to-petal-300/30 rounded-full blur-2xl animate-float" style={{ animationDelay: '3s' }}></div>
+            </div>
+
+            {/* Grid pattern overlay */}
+            <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]"
+                 style={{
+                   backgroundImage: `radial-gradient(circle at 1px 1px, rgb(15 23 42) 1px, transparent 0)`,
+                   backgroundSize: '50px 50px'
+                 }}>
+            </div>
+
+            {/* Overlay for better text readability */}
+            <div className="absolute inset-0 bg-white/20 dark:bg-black/20"></div>
           </div>
 
           {/* Hero Content */}
@@ -80,7 +107,7 @@ export const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
                   onClick={handleMenuClick}
                   size="lg"
                   variant="outline"
-                  className="modern-button glass border-2 border-orchid-200 dark:border-orchid-800 text-gray-800 dark:text-gray-100 hover:bg-orchid-50 dark:hover:bg-orchid-950/50 group transition-all duration-300 hover:scale-105"
+                  className="modern-button glass border-2 border-orchid-200 dark:border-orchid-800 text-gray-800 dark:text-gray-100 hover:bg-orchid-50 dark:hover:bg-orchid-950/50 group transition-all duration-300 hover:scale-105 cursor-pointer"
                 >
                   <div className="flex items-center space-x-2">
                     <Coffee className="w-5 h-5" />
