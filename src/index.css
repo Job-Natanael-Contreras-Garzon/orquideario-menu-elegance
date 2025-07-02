@@ -5,7 +5,6 @@
 
 @layer base {
   :root {
-    --background: 249 250 251; /* Very light gray */
     --foreground: 17 24 39; /* Dark gray for text */
     --card: 255 255 255;
     --card-foreground: 17 24 39;
@@ -67,7 +66,7 @@
 
 @layer utilities {
   .glass {
-    @apply bg-white/10 backdrop-blur-xl border border-leaf-200/20 dark:border-leaf-800/20 transition-all duration-500;
+    @apply bg-white/95 backdrop-blur-sm border border-gray-100 shadow-sm dark:bg-black/10 dark:border-leaf-800/20 transition-all duration-500;
   }
   .glass-dark {
     @apply bg-black/10 backdrop-blur-xl border border-leaf-200/10 dark:border-leaf-800/10 transition-all duration-500;
@@ -83,7 +82,7 @@
     @apply shadow-lg shadow-leaf-500/25 transition-shadow duration-300;
   }
   .floating-card {
-    @apply transform-gpu transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orchid-500/20;
+    @apply transform-gpu transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-black/10 dark:hover:shadow-orchid-500/20;
   }
   .modern-input {
     @apply border-0 bg-leaf-50/50 dark:bg-leaf-950/50 backdrop-blur-sm rounded-xl px-4 py-3 transition-all duration-300 focus:bg-white dark:focus:bg-card/80 focus:shadow-lg focus:shadow-leaf-500/20 focus:scale-105 focus:ring-2 focus:ring-leaf-500/30;
@@ -101,10 +100,10 @@
     @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-orchid-500/10;
   }
   .bg-native-gradient {
-    @apply bg-gradient-to-br from-leaf-50 via-orchid-50 to-petal-50 dark:from-leaf-950 dark:via-background dark:to-petal-950;
+    @apply bg-card dark:bg-gradient-to-br dark:from-leaf-950 dark:via-background dark:to-petal-950;
   }
   .category-gradient {
-    @apply bg-gradient-to-br from-leaf-100 via-orchid-100 to-petal-100 dark:from-leaf-900 dark:via-orchid-900 dark:to-petal-900;
+    @apply bg-card dark:bg-gradient-to-br dark:from-leaf-900 dark:via-orchid-900 dark:to-petal-900;
   }
 }
 

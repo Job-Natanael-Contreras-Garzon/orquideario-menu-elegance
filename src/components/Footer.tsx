@@ -70,15 +70,17 @@ export const Footer: React.FC = () => {
                   WhatsApp
                 </Button>
                 
-                <Button
-                  onClick={handleInstagramClick}
-                  size="sm"
-                  variant="outline"
-                  className="border-orchid-400 text-orchid-300 hover:bg-orchid-500 hover:text-white transition-all duration-300 hover:scale-105"
-                >
-                  <Instagram className="w-4 h-4 mr-2" />
-                  Instagram
-                </Button>
+                <div className="relative p-0.5 rounded-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
+                  <Button
+                    onClick={handleInstagramClick}
+                    size="sm"
+                    variant="outline"
+                    className="relative w-full bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105"
+                  >
+                    <Instagram className="w-4 h-4 mr-2 text-pink-500" />
+                    <span>Instagram</span>
+                  </Button>
+                </div>
               </div>
             </div>
 

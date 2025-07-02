@@ -19,27 +19,27 @@ export const SpecialOrdersSection: React.FC<SpecialOrdersSectionProps> = ({
 
   return (
     <div className="space-y-6">
-      <Card className="border-accent/50">
+      <Card className="border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/95">
         <CardHeader>
-          <CardTitle className="font-playfair text-xl text-center">
+          <CardTitle className="font-playfair text-xl text-center text-gray-800 dark:text-gray-100">
             {t('special.conditions')}
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          <Alert>
-            <AlertDescription>
+          <Alert className="bg-gray-50 dark:bg-gray-800/50 border-gray-200 dark:border-gray-700">
+            <AlertDescription className="text-gray-700 dark:text-gray-200">
               🕘 {t('special.schedule')}
             </AlertDescription>
           </Alert>
           
-          <Alert>
-            <AlertDescription>
+          <Alert className="bg-gray-50 dark:bg-gray-800/50 border-gray-200 dark:border-gray-700">
+            <AlertDescription className="text-gray-700 dark:text-gray-200">
               💰 {t('special.advance')}
             </AlertDescription>
           </Alert>
           
-          <Alert>
-            <AlertDescription>
+          <Alert className="bg-gray-50 dark:bg-gray-800/50 border-gray-200 dark:border-gray-700">
+            <AlertDescription className="text-gray-700 dark:text-gray-200">
               📞 {t('special.consultation')}
             </AlertDescription>
           </Alert>

@@ -32,7 +32,7 @@ export const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
         <div className="sticky top-0 h-screen flex flex-col">
           {/* Clean gradient background without yellow */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-leaf-50 via-orchid-50 to-petal-50 dark:from-leaf-950 dark:via-background dark:to-petal-950"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-leaf-50 via-green-100 to-leaf-200 dark:from-leaf-950 dark:via-background dark:to-green-950"></div>
             
             {/* Floating geometric shapes */}
             <div className="absolute inset-0">
@@ -120,11 +120,13 @@ export const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
           </div>
 
           {/* Blur effect at the bottom */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-20"></div>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-20"></div>
 
         {/* Scrollable Content Section */}
         <div className="absolute top-full left-0 right-0 z-30 bg-background">
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-20"></div>
+          
           <div className="container mx-auto px-4 py-16">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
@@ -134,7 +136,7 @@ export const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
               ].map((feature, index) => (
                 <div 
                   key={index}
-                  className="floating-card glass rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300 bg-white/5 dark:bg-black/10 backdrop-blur-lg"
+                  className="floating-card glass rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300 bg-white dark:bg-black/10 backdrop-blur-sm"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <div className="text-4xl mb-4">{feature.icon}</div>
@@ -144,6 +146,7 @@ export const Home: React.FC<HomeProps> = ({ onMenuClick }) => {
               ))}
             </div>
           </div>
+          
           <Footer />
         </div>
       </div>
