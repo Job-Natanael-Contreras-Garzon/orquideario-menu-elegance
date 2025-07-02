@@ -1,73 +1,85 @@
-# Welcome to your Lovable project
+# 🌸 El Orquideario - Menú Digital
 
-## Project info
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-**URL**: https://lovable.dev/projects/88b0fdf6-be2a-44a8-a131-0b2c01946699
+Menú digital interactivo para El Orquideario, un espacio único que combina la belleza de las orquídeas con una experiencia gastronómica excepcional.
 
-## How can I edit this code?
+## 🚀 Características
 
-There are several ways of editing your application.
+- Interfaz moderna y receptiva
+- Modo claro/oscuro
+- Visualización de productos con imágenes y descripciones
+- Sección de combos especiales
+- Integración con WhatsApp para reservas
+- Diseño elegante y minimalista
 
-**Use Lovable**
+## 🛠 Tecnologías
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/88b0fdf6-be2a-44a8-a131-0b2c01946699) and start prompting.
+- **Frontend**: React 18 con TypeScript
+- **Estilos**: Tailwind CSS
+- **Animaciones**: Framer Motion
+- **UI**: Componentes personalizados
+- **Formato de precios**: Intl.NumberFormat
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Instalación
 
-**Use your preferred IDE**
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/Job-Natanael-Contreras-Garzon/orquideario-menu-elegance.git
+   cd orquideario-menu-elegance
+   ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+2. Instala las dependencias:
+   ```bash
+   npm install
+   # o
+   yarn install
+   ```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+3. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   # o
+   yarn dev
+   ```
 
-Follow these steps:
+4. Abre [http://localhost:5173](http://localhost:5173) en tu navegador.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🎨 Personalización
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Variables de entorno
 
-# Step 3: Install the necessary dependencies.
-npm i
+Crea un archivo `.env` en la raíz del proyecto:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```env
+VITE_APP_TITLE="El Orquideario"
+VITE_WHATSAPP_NUMBER="+1234567890"
+VITE_INSTAGRAM_USERNAME="orquideario"
 ```
 
-**Edit a file directly in GitHub**
+### Temas
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Los colores del tema se pueden modificar en:
+- `tailwind.config.ts` - Configuración de colores y fuentes
+- `src/index.css` - Estilos globales y animaciones
 
-**Use GitHub Codespaces**
+## 📱 Componentes principales
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- **ProductCard**: Tarjeta de producto con imagen, descripción y precios
+- **ProductModal**: Modal con detalles completos del producto
+- **ComboCard**: Visualización de combos especiales
+- **Footer**: Pie de página con información de contacto y redes sociales
 
-## What technologies are used for this project?
+## 🤝 Contribución
 
-This project is built with:
+Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir los cambios que te gustaría hacer.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📄 Licencia
 
-## How can I deploy this project?
+Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más información.
 
-Simply open [Lovable](https://lovable.dev/projects/88b0fdf6-be2a-44a8-a131-0b2c01946699) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Desarrollado con ❤️ por [JobContreras](https://github.com/Job-Natanael-Contreras-Garzon) para [BrandingBrothers](https://brandingbrothers.com)
